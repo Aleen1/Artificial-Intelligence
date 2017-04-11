@@ -1,0 +1,54 @@
+barbat(ion).
+barbat(marian).
+barbat(ionel).
+barbat(cristian).
+barbat(gheorghe).
+barbat(paul).
+femeie(ioana).
+femeie(maria).
+femeie(mariana).
+femeie(dana).
+femeie(roxana).
+femeie(paula).
+femeie(georgeta).
+femeie(georgiana).
+parinte(ion, ionel).
+parinte(ioana, ionel).
+parinte(marian, mariana).
+parinte(maria, mariana).
+parinte(ionel, georgiana).
+parinte(ionel, gheorghe).
+parinte(ionel, georgeta).
+parinte(mariana, georgiana).
+parinte(mariana, gheorghe).
+parinte(mariana, georgeta).
+parinte(gheorghe, roxana).
+parinte(dana, roxana).
+parinte(georgiana, paul).
+parinte(georgiana, paula).
+parinte(cristian, paul).
+parinte(cristian, paula).
+casatorit(ion, ioana).
+casatorit(ioana, ion).
+casatorit(marian, maria).
+casatorit(maria, marian).
+casatorit(ionel, mariana).
+casatorit(mariana, ionel).
+casatorit(georgiana, cristian).
+casatorit(cristian,georgiana).
+casatorit(gheorghe, dana).
+casatorit(dana, gheorghe).
+
+
+%HomeWork - Alin Calina - 11/4/2017
+
+sotie(X,Y):-femeie(X), barbat(Y), casatorit(X, Y), casatorit(Y, X).
+frate(X,Y):-barbat(X), parinte(Z, X), parinte(Z, Y), not(X = Y).
+bunica_materna(X,Y):- femeie(X), parinte(X, Z), parinte(Z, Y).
+unchi(X,Y):- barbat(X), parinte(Z, Y), frate(X, Z).
+vara_primara(X,Y):- femeie(X), parinte(Z, X), unchi(Z, Y).
+socru(X,Y):- barbat(X), parinte(X, Z), parinte(Y, W), not(Z = W), parinte(Z, T), parinte(W, T).
+cuscra(X, Y):- femeie(X), parinte(X, Z), parinte(Y, W), not(Z = W), parinte(Z, T), parinte(W, T).
+cumnat(X, Y):- barbat(X), frate(X, Z), parinte(Z, T), parinte(Y, T), not(Z = Y).
+nora(X,Y):- femeie(X), parinte(Y, Z), sotie(X, Z).
+stranepot(X,Y):- barbat(X), parinte(Z, X), parinte(T, Z), parinte(Y, T).
